@@ -1,0 +1,26 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import datetime as dt
+from sklearn.metrics import mean_squared_error, mean_absolute_error, explained_variance_score, r2_score
+from sklearn.metrics import mean_poisson_deviance, mean_gamma_deviance, accuracy_score
+from sklearn.preprocessing import MinMaxScaler
+#importing nifty data form local
+
+rel=pd.read_csv("D:\\DataScience\\DataSets\\rel.csv")
+sns.set_style('whitegrid')
+
+#rename the columns of dataframe
+rel.rename(columns={"Open":"open","Close":"close","Date":"date"},inplace=True)
+rel.head()
+
+#checking the null values
+rel.isnull().sum()
+#to check datatype of each column
+type(rel["date"][0])
+
+#Convert date from string to date format
+rel["date"]=pd.to_datetime(rel.date)
+type(rel["date"][0])
+rel["open"].dtypes
